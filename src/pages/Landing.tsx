@@ -2,14 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '../components/Button';
-import SearchIcon from '@mui/icons-material/Search';
-import EngineeringIcon from '@mui/icons-material/Engineering';
-import PlumbingIcon from '@mui/icons-material/Plumbing';
-import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
-import RoofingIcon from '@mui/icons-material/Roofing';
-import FormatPaintIcon from '@mui/icons-material/FormatPaint';
-import HvacIcon from '@mui/icons-material/Hvac';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import {
+  Search as SearchIcon,
+  Engineering as EngineeringIcon,
+  Plumbing as PlumbingIcon,
+  ElectricBolt as ElectricBoltIcon,
+  Roofing as RoofingIcon,
+  FormatPaint as FormatPaintIcon,
+  Hvac as HvacIcon,
+  CheckCircleOutline as CheckCircleOutlineIcon } from
+'@mui/icons-material';
 export function Landing() {
   const navigate = useNavigate();
   const categories = [

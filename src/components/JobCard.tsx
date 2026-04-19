@@ -2,10 +2,12 @@ import React from 'react';
 import { Job } from '../data/types';
 import { Badge } from './Badge';
 import { motion } from 'framer-motion';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import BuildIcon from '@mui/icons-material/Build';
+import {
+  LocationOn as LocationOnIcon,
+  AccessTime as AccessTimeIcon,
+  AttachMoney as AttachMoneyIcon,
+  Build as BuildIcon } from
+'@mui/icons-material';
 interface JobCardProps {
   job: Job;
   onClick?: () => void;

@@ -1,16 +1,18 @@
 import React, { cloneElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import WorkIcon from '@mui/icons-material/Work';
-import DescriptionIcon from '@mui/icons-material/Description';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PaymentIcon from '@mui/icons-material/Payment';
-import MessageIcon from '@mui/icons-material/Message';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import SearchIcon from '@mui/icons-material/Search';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import {
+  Dashboard as DashboardIcon,
+  Work as WorkIcon,
+  Description as DescriptionIcon,
+  AccountCircle as AccountCircleIcon,
+  Payment as PaymentIcon,
+  Message as MessageIcon,
+  Settings as SettingsIcon,
+  AddCircleOutline as AddCircleOutlineIcon,
+  Search as SearchIcon,
+  AssignmentTurnedIn as AssignmentTurnedInIcon } from
+'@mui/icons-material';
 export function Sidebar() {
   const { user } = useAuth();
   const employerLinks = [

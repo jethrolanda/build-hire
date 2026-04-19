@@ -5,12 +5,14 @@ import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/Button';
 import { Badge } from '../components/Badge';
 import { Textarea, Input } from '../components/Input';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import BuildIcon from '@mui/icons-material/Build';
-import BusinessIcon from '@mui/icons-material/Business';
-import StarIcon from '@mui/icons-material/Star';
+import {
+  LocationOn as LocationOnIcon,
+  AccessTime as AccessTimeIcon,
+  AttachMoney as AttachMoneyIcon,
+  Build as BuildIcon,
+  Business as BusinessIcon,
+  Star as StarIcon } from
+'@mui/icons-material';
 export function JobDetail() {
   const { id } = useParams<{
     id: string;

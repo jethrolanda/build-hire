@@ -4,10 +4,12 @@ import { mockJobs, mockBids, mockProjects } from '../../data/mockData';
 import { JobCard } from '../../components/JobCard';
 import { Button } from '../../components/Button';
 import { Badge } from '../../components/Badge';
-import WorkIcon from '@mui/icons-material/Work';
-import DescriptionIcon from '@mui/icons-material/Description';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import {
+  Work as WorkIcon,
+  Description as DescriptionIcon,
+  AssignmentTurnedIn as AssignmentTurnedInIcon,
+  AttachMoney as AttachMoneyIcon } from
+'@mui/icons-material';
 export function EmployerDashboard() {
   const { user } = useAuth();
   // Filter data for this employer

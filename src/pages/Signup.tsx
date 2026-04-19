@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
-import ConstructionIcon from '@mui/icons-material/Construction';
-import BusinessIcon from '@mui/icons-material/Business';
-import EngineeringIcon from '@mui/icons-material/Engineering';
+import {
+  Construction as ConstructionIcon,
+  Business as BusinessIcon,
+  Engineering as EngineeringIcon } from
+'@mui/icons-material';
 export function Signup() {
   const [step, setStep] = useState(1);
   const [role, setRole] = useState<'employer' | 'contractor' | null>(null);

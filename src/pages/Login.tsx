@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
-import ConstructionIcon from '@mui/icons-material/Construction';
-import EmailIcon from '@mui/icons-material/Email';
-import LockIcon from '@mui/icons-material/Lock';
+import {
+  Construction as ConstructionIcon,
+  Email as EmailIcon,
+  Lock as LockIcon } from
+'@mui/icons-material';
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

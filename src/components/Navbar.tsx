@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './Button';
-import ConstructionIcon from '@mui/icons-material/Construction';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import {
+  Construction as ConstructionIcon,
+  Menu as MenuIcon,
+  Close as CloseIcon,
+  Notifications as NotificationsIcon } from
+'@mui/icons-material';
 export function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();

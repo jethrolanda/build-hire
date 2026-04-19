@@ -4,8 +4,10 @@ import { mockJobs } from '../data/mockData';
 import { JobCard } from '../components/JobCard';
 import { Input, Select } from '../components/Input';
 import { Button } from '../components/Button';
-import SearchIcon from '@mui/icons-material/Search';
-import FilterListIcon from '@mui/icons-material/FilterList';
+import {
+  Search as SearchIcon,
+  FilterList as FilterListIcon } from
+'@mui/icons-material';
 export function JobBoard() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');

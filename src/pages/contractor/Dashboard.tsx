@@ -4,10 +4,12 @@ import { mockJobs, mockBids, mockProjects } from '../../data/mockData';
 import { JobCard } from '../../components/JobCard';
 import { Button } from '../../components/Button';
 import { Badge } from '../../components/Badge';
-import SearchIcon from '@mui/icons-material/Search';
-import DescriptionIcon from '@mui/icons-material/Description';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import {
+  Search as SearchIcon,
+  Description as DescriptionIcon,
+  AssignmentTurnedIn as AssignmentTurnedInIcon,
+  AccountBalanceWallet as AccountBalanceWalletIcon } from
+'@mui/icons-material';
 export function ContractorDashboard() {
   const { user } = useAuth();
   // Filter data for this contractor

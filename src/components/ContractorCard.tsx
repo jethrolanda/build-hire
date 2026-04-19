@@ -2,9 +2,11 @@ import React from 'react';
 import { ContractorProfile } from '../data/types';
 import { Badge } from './Badge';
 import { motion } from 'framer-motion';
-import StarIcon from '@mui/icons-material/Star';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import VerifiedIcon from '@mui/icons-material/Verified';
+import {
+  Star as StarIcon,
+  LocationOn as LocationOnIcon,
+  Verified as VerifiedIcon } from
+'@mui/icons-material';
 interface ContractorCardProps {
   contractor: ContractorProfile;
   onClick?: () => void;
