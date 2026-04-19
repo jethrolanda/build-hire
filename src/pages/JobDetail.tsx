@@ -6,13 +6,13 @@ import { Button } from '../components/Button';
 import { Badge } from '../components/Badge';
 import { Textarea, Input } from '../components/Input';
 import {
-  LocationOn as LocationOnIcon,
-  AccessTime as AccessTimeIcon,
-  AttachMoney as AttachMoneyIcon,
-  Build as BuildIcon,
-  Business as BusinessIcon,
-  Star as StarIcon } from
-'@mui/icons-material';
+  MapPin,
+  Clock,
+  DollarSign,
+  Wrench,
+  Building2,
+  Star } from
+'lucide-react';
 export function JobDetail() {
   const { id } = useParams<{
     id: string;
@@ -30,7 +30,6 @@ export function JobDetail() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Main Content */}
         <div className="flex-1 space-y-6">
           <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
             <div className="flex justify-between items-start mb-6">
@@ -40,16 +39,15 @@ export function JobDetail() {
                 </h1>
                 <div className="flex flex-wrap items-center text-sm text-gray-500 gap-4">
                   <span className="flex items-center">
-                    <LocationOnIcon className="w-4 h-4 mr-1" /> {job.location}
+                    <MapPin size={14} className="mr-1" /> {job.location}
                   </span>
                   <span className="flex items-center">
-                    <AccessTimeIcon className="w-4 h-4 mr-1" /> Posted{' '}
+                    <Clock size={14} className="mr-1" /> Posted{' '}
                     {new Date(job.postedAt).toLocaleDateString()}
                   </span>
                   <span className="flex items-center text-amber-600 font-medium">
-                    <AttachMoneyIcon className="w-4 h-4" /> $
-                    {job.budgetMin.toLocaleString()} - $
-                    {job.budgetMax.toLocaleString()}
+                    <DollarSign size={14} /> ${job.budgetMin.toLocaleString()} -
+                    ${job.budgetMax.toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -60,7 +58,7 @@ export function JobDetail() {
 
             <div className="flex flex-wrap gap-2 mb-8 pb-8 border-b border-gray-100">
               <Badge variant="primary" className="text-sm py-1 px-3">
-                <BuildIcon className="w-4 h-4 mr-1" /> {job.trade}
+                <Wrench size={14} className="mr-1 inline" /> {job.trade}
               </Badge>
               <Badge
                 variant={job.urgency === 'emergency' ? 'danger' : 'info'}
@@ -93,13 +91,11 @@ export function JobDetail() {
             }
           </div>
 
-          {/* Bidding Section for Contractors */}
           {user?.role === 'contractor' && job.status === 'open' &&
           <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
               <h2 className="text-xl font-bold text-navy-900 mb-6">
                 Submit a Proposal
               </h2>
-
               {!isBidding ?
             <div className="text-center py-8 bg-gray-50 rounded-lg border border-dashed border-gray-300">
                   <p className="text-gray-600 mb-4">
@@ -150,13 +146,11 @@ export function JobDetail() {
             </div>
           }
 
-          {/* Bids List for Employer Owner */}
           {isEmployerOwner &&
           <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
               <h2 className="text-xl font-bold text-navy-900 mb-6">
                 Proposals ({jobBids.length})
               </h2>
-
               {jobBids.length > 0 ?
             <div className="space-y-4">
                   {jobBids.map((bid) =>
@@ -176,7 +170,10 @@ export function JobDetail() {
                               {bid.contractor?.name}
                             </h3>
                             <div className="flex items-center text-sm text-gray-500">
-                              <StarIcon className="w-4 h-4 text-amber-500 mr-1" />
+                              <Star
+                          size={14}
+                          className="text-amber-500 mr-1 fill-amber-500" />
+                        
                               {bid.contractor?.rating} (
                               {bid.contractor?.reviewCount} reviews)
                             </div>
@@ -215,9 +212,7 @@ export function JobDetail() {
           }
         </div>
 
-        {/* Sidebar */}
         <div className="w-full lg:w-80 flex-shrink-0 space-y-6">
-          {/* Employer Info */}
           <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
             <h3 className="text-lg font-semibold text-navy-900 mb-4">
               About the Employer
@@ -234,13 +229,12 @@ export function JobDetail() {
                 </div>
                 {job.employer?.companyName &&
                 <div className="text-sm text-gray-500 flex items-center">
-                    <BusinessIcon className="w-3 h-3 mr-1" />{' '}
+                    <Building2 size={12} className="mr-1" />{' '}
                     {job.employer.companyName}
                   </div>
                 }
               </div>
             </div>
-
             <div className="space-y-3 text-sm">
               <div className="flex justify-between pb-2 border-b border-gray-100">
                 <span className="text-gray-500">Location</span>
@@ -269,7 +263,6 @@ export function JobDetail() {
             </div>
           </div>
 
-          {/* Action Card for unauthenticated users */}
           {!isAuthenticated &&
           <div className="bg-navy-900 p-6 rounded-xl text-white text-center">
               <h3 className="font-semibold mb-2">Interested in this job?</h3>

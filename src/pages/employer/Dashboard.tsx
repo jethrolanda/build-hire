@@ -3,20 +3,12 @@ import { useAuth } from '../../context/AuthContext';
 import { mockJobs, mockBids, mockProjects } from '../../data/mockData';
 import { JobCard } from '../../components/JobCard';
 import { Button } from '../../components/Button';
-import { Badge } from '../../components/Badge';
-import {
-  Work as WorkIcon,
-  Description as DescriptionIcon,
-  AssignmentTurnedIn as AssignmentTurnedInIcon,
-  AttachMoney as AttachMoneyIcon } from
-'@mui/icons-material';
+import { Briefcase, FileText, ClipboardCheck, DollarSign } from 'lucide-react';
 export function EmployerDashboard() {
   const { user } = useAuth();
-  // Filter data for this employer
   const myJobs = mockJobs.filter((j) => j.employerId === user?.id);
   const myActiveJobs = myJobs.filter((j) => j.status === 'open');
   const myProjects = mockProjects.filter((p) => p.employerId === user?.id);
-  // Get bids for my jobs
   const myJobIds = myJobs.map((j) => j.id);
   const pendingBids = mockBids.filter(
     (b) => myJobIds.includes(b.jobId) && b.status === 'pending'
@@ -35,11 +27,10 @@ export function EmployerDashboard() {
         <Button>Post a New Job</Button>
       </div>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
           <div className="p-3 rounded-full bg-blue-100 text-blue-600">
-            <WorkIcon />
+            <Briefcase size={22} />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-500">Active Jobs</p>
@@ -48,10 +39,9 @@ export function EmployerDashboard() {
             </p>
           </div>
         </div>
-
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
           <div className="p-3 rounded-full bg-amber-100 text-amber-600">
-            <DescriptionIcon />
+            <FileText size={22} />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-500">
@@ -62,10 +52,9 @@ export function EmployerDashboard() {
             </p>
           </div>
         </div>
-
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
           <div className="p-3 rounded-full bg-green-100 text-green-600">
-            <AssignmentTurnedInIcon />
+            <ClipboardCheck size={22} />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-500">Active Projects</p>
@@ -74,17 +63,16 @@ export function EmployerDashboard() {
             </p>
           </div>
         </div>
-
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center space-x-4">
           <div className="p-3 rounded-full bg-purple-100 text-purple-600">
-            <AttachMoneyIcon />
+            <DollarSign size={22} />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-500">Total Spent</p>
             <p className="text-2xl font-bold text-navy-900">
               $
               {user?.role === 'employer' ?
-              user.totalSpent.toLocaleString() :
+              (user as any).totalSpent?.toLocaleString() :
               '0'}
             </p>
           </div>
@@ -92,7 +80,6 @@ export function EmployerDashboard() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Recent Jobs */}
         <div className="lg:col-span-2 space-y-6">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-navy-900">
@@ -102,7 +89,6 @@ export function EmployerDashboard() {
               View All
             </Button>
           </div>
-
           <div className="space-y-4">
             {myJobs.slice(0, 3).map((job) =>
             <JobCard key={job.id} job={job} />
@@ -118,7 +104,6 @@ export function EmployerDashboard() {
           </div>
         </div>
 
-        {/* Recent Activity / Proposals */}
         <div className="space-y-6">
           <h2 className="text-xl font-bold text-navy-900">New Proposals</h2>
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">

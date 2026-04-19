@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './Button';
-import {
-  Construction as ConstructionIcon,
-  Menu as MenuIcon,
-  Close as CloseIcon,
-  Notifications as NotificationsIcon } from
-'@mui/icons-material';
+import { HardHat, Menu, X, Bell } from 'lucide-react';
 export function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
@@ -18,15 +13,13 @@ export function Navbar() {
     navigate('/');
   };
   const isDashboard = location.pathname.includes('/dashboard');
-  // If we're in the dashboard, we might want a simpler navbar or let the sidebar handle it
-  // For this design, we'll keep a top navbar for user profile/notifications
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center flex-shrink-0">
-              <ConstructionIcon className="h-8 w-8 text-amber-500" />
+              <HardHat size={32} className="text-amber-500" />
               <span className="ml-2 text-xl font-bold text-navy-900 tracking-tight">
                 BuildHire
               </span>
@@ -60,7 +53,7 @@ export function Navbar() {
             {isAuthenticated ?
             <>
                 <button className="p-2 text-gray-400 hover:text-gray-500 relative">
-                  <NotificationsIcon />
+                  <Bell size={22} />
                   <span className="absolute top-1.5 right-1.5 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
                 </button>
 
@@ -113,13 +106,12 @@ export function Navbar() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500">
               
-              {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isMobileMenuOpen &&
       <div className="md:hidden border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">

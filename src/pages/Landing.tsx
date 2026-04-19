@@ -3,41 +3,41 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '../components/Button';
 import {
-  Search as SearchIcon,
-  Engineering as EngineeringIcon,
-  Plumbing as PlumbingIcon,
-  ElectricBolt as ElectricBoltIcon,
-  Roofing as RoofingIcon,
-  FormatPaint as FormatPaintIcon,
-  Hvac as HvacIcon,
-  CheckCircleOutline as CheckCircleOutlineIcon } from
-'@mui/icons-material';
+  Search,
+  HardHat,
+  Droplets,
+  Zap,
+  Home,
+  Paintbrush,
+  Wind,
+  CheckCircle } from
+'lucide-react';
 export function Landing() {
   const navigate = useNavigate();
   const categories = [
   {
     name: 'General Contracting',
-    icon: <EngineeringIcon fontSize="large" />
+    icon: <HardHat size={32} />
   },
   {
     name: 'Plumbing',
-    icon: <PlumbingIcon fontSize="large" />
+    icon: <Droplets size={32} />
   },
   {
     name: 'Electrical',
-    icon: <ElectricBoltIcon fontSize="large" />
+    icon: <Zap size={32} />
   },
   {
     name: 'Roofing',
-    icon: <RoofingIcon fontSize="large" />
+    icon: <Home size={32} />
   },
   {
     name: 'Painting',
-    icon: <FormatPaintIcon fontSize="large" />
+    icon: <Paintbrush size={32} />
   },
   {
     name: 'HVAC',
-    icon: <HvacIcon fontSize="large" />
+    icon: <Wind size={32} />
   }];
 
   return (
@@ -46,7 +46,7 @@ export function Landing() {
       <section className="relative bg-navy-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img
-            src="https://images.unsplash.com/photo-1541888086925-920a0eb56e1e?auto=format&fit=crop&q=80&w=2000"
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
             alt="Construction background"
             className="w-full h-full object-cover" />
           
@@ -105,7 +105,7 @@ export function Landing() {
               className="bg-white p-2 rounded-lg flex flex-col sm:flex-row shadow-lg max-w-2xl">
               
               <div className="flex-1 flex items-center px-4 py-2 sm:py-0 text-gray-900">
-                <SearchIcon className="text-gray-400 mr-2" />
+                <Search size={20} className="text-gray-400 mr-2" />
                 <input
                   type="text"
                   placeholder="What trade are you looking for? (e.g. Plumber)"
@@ -133,15 +133,15 @@ export function Landing() {
               className="mt-8 flex items-center space-x-6 text-sm font-medium text-gray-300">
               
               <span className="flex items-center">
-                <CheckCircleOutlineIcon className="w-5 h-5 text-amber-500 mr-2" />{' '}
-                Vetted Professionals
+                <CheckCircle size={18} className="text-amber-500 mr-2" /> Vetted
+                Professionals
               </span>
               <span className="flex items-center">
-                <CheckCircleOutlineIcon className="w-5 h-5 text-amber-500 mr-2" />{' '}
-                Secure Payments
+                <CheckCircle size={18} className="text-amber-500 mr-2" /> Secure
+                Payments
               </span>
               <span className="flex items-center">
-                <CheckCircleOutlineIcon className="w-5 h-5 text-amber-500 mr-2" />{' '}
+                <CheckCircle size={18} className="text-amber-500 mr-2" />{' '}
                 Project Protection
               </span>
             </motion.div>
@@ -186,7 +186,7 @@ export function Landing() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {categories.map((category, index) =>
+            {categories.map((category) =>
             <motion.div
               key={category.name}
               whileHover={{
@@ -220,7 +220,6 @@ export function Landing() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-16">
-            {/* For Employers */}
             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
               <h3 className="text-2xl font-bold text-navy-900 mb-8 border-b border-gray-200 pb-4">
                 For Employers
@@ -276,7 +275,6 @@ export function Landing() {
               </div>
             </div>
 
-            {/* For Contractors */}
             <div className="bg-navy-900 p-8 rounded-2xl text-white">
               <h3 className="text-2xl font-bold mb-8 border-b border-navy-700 pb-4">
                 For Contractors
@@ -357,7 +355,8 @@ export function Landing() {
             </Button>
             <Button
               size="lg"
-              className="bg-white text-navy-900 hover:bg-gray-100"
+              variant="outline"
+              className="!bg-white !text-navy-900 !border-white hover:!bg-gray-100"
               onClick={() => navigate('/signup')}>
               
               I want to work

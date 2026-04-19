@@ -2,11 +2,7 @@ import React from 'react';
 import { ContractorProfile } from '../data/types';
 import { Badge } from './Badge';
 import { motion } from 'framer-motion';
-import {
-  Star as StarIcon,
-  LocationOn as LocationOnIcon,
-  Verified as VerifiedIcon } from
-'@mui/icons-material';
+import { Star, MapPin, BadgeCheck } from 'lucide-react';
 interface ContractorCardProps {
   contractor: ContractorProfile;
   onClick?: () => void;
@@ -33,20 +29,14 @@ export function ContractorCard({ contractor, onClick }: ContractorCardProps) {
             <div>
               <h3 className="text-lg font-semibold text-navy-900 flex items-center">
                 {contractor.name}
-                <VerifiedIcon
-                  className="w-4 h-4 text-blue-500 ml-1"
-                  fontSize="small" />
-                
+                <BadgeCheck size={16} className="text-blue-500 ml-1" />
               </h3>
               <p className="text-sm text-gray-600 font-medium">
                 {contractor.title}
               </p>
             </div>
             <div className="flex items-center bg-amber-50 px-2 py-1 rounded-md">
-              <StarIcon
-                className="w-4 h-4 text-amber-500 mr-1"
-                fontSize="small" />
-              
+              <Star size={14} className="text-amber-500 mr-1 fill-amber-500" />
               <span className="font-bold text-amber-700 text-sm">
                 {contractor.rating}
               </span>
@@ -56,8 +46,7 @@ export function ContractorCard({ contractor, onClick }: ContractorCardProps) {
             </div>
           </div>
           <div className="flex items-center text-xs text-gray-500 mt-1">
-            <LocationOnIcon className="w-3 h-3 mr-0.5" fontSize="small" />{' '}
-            {contractor.location}
+            <MapPin size={12} className="mr-0.5" /> {contractor.location}
           </div>
         </div>
       </div>

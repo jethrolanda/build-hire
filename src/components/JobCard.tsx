@@ -2,12 +2,7 @@ import React from 'react';
 import { Job } from '../data/types';
 import { Badge } from './Badge';
 import { motion } from 'framer-motion';
-import {
-  LocationOn as LocationOnIcon,
-  AccessTime as AccessTimeIcon,
-  AttachMoney as AttachMoneyIcon,
-  Build as BuildIcon } from
-'@mui/icons-material';
+import { MapPin, Clock, DollarSign, Wrench } from 'lucide-react';
 interface JobCardProps {
   job: Job;
   onClick?: () => void;
@@ -64,12 +59,10 @@ export function JobCard({ job, onClick }: JobCardProps) {
           </h3>
           <div className="flex items-center text-sm text-gray-500 space-x-4">
             <span className="flex items-center">
-              <LocationOnIcon className="w-4 h-4 mr-1" fontSize="small" />{' '}
-              {job.location}
+              <MapPin size={14} className="mr-1" /> {job.location}
             </span>
             <span className="flex items-center">
-              <AccessTimeIcon className="w-4 h-4 mr-1" fontSize="small" />{' '}
-              {timeAgo(job.postedAt)}
+              <Clock size={14} className="mr-1" /> {timeAgo(job.postedAt)}
             </span>
           </div>
         </div>
@@ -91,7 +84,7 @@ export function JobCard({ job, onClick }: JobCardProps) {
 
       <div className="flex flex-wrap gap-2 mb-4">
         <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
-          <BuildIcon className="w-3 h-3 mr-1" fontSize="small" /> {job.trade}
+          <Wrench size={12} className="mr-1" /> {job.trade}
         </span>
         {job.requiredCertifications.map((cert) =>
         <span
@@ -105,7 +98,7 @@ export function JobCard({ job, onClick }: JobCardProps) {
 
       <div className="flex justify-between items-center pt-4 border-t border-gray-100">
         <div className="flex items-center text-navy-800 font-semibold">
-          <AttachMoneyIcon className="w-5 h-5 text-amber-500" />$
+          <DollarSign size={18} className="text-amber-500" />
           {job.budgetMin.toLocaleString()} - ${job.budgetMax.toLocaleString()}
         </div>
         <div className="text-sm text-gray-500">

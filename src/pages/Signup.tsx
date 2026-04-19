@@ -3,11 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
-import {
-  Construction as ConstructionIcon,
-  Business as BusinessIcon,
-  Engineering as EngineeringIcon } from
-'@mui/icons-material';
+import { HardHat, Building2, Wrench } from 'lucide-react';
 export function Signup() {
   const [step, setStep] = useState(1);
   const [role, setRole] = useState<'employer' | 'contractor' | null>(null);
@@ -22,7 +18,6 @@ export function Signup() {
     e.preventDefault();
     if (!role) return;
     setIsLoading(true);
-    // Simulate API call
     setTimeout(() => {
       login('newuser@example.com', role);
       navigate(`/${role}/dashboard`);
@@ -33,7 +28,7 @@ export function Signup() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <ConstructionIcon className="h-12 w-12 text-amber-500" />
+          <HardHat size={48} className="text-amber-500" />
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-navy-900">
           Join BuildHire
@@ -56,7 +51,6 @@ export function Signup() {
               <h3 className="text-lg font-medium text-gray-900 mb-6 text-center">
                 How do you want to use BuildHire?
               </h3>
-
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div
                 className={`border-2 rounded-xl p-6 cursor-pointer transition-all ${role === 'employer' ? 'border-amber-500 bg-amber-50' : 'border-gray-200 hover:border-amber-300'}`}
@@ -66,7 +60,7 @@ export function Signup() {
                     <div
                     className={`p-3 rounded-full mb-4 ${role === 'employer' ? 'bg-amber-100 text-amber-600' : 'bg-gray-100 text-gray-500'}`}>
                     
-                      <BusinessIcon fontSize="large" />
+                      <Building2 size={32} />
                     </div>
                     <h4 className="text-lg font-bold text-navy-900 mb-2">
                       I'm an Employer
@@ -77,7 +71,6 @@ export function Signup() {
                     </p>
                   </div>
                 </div>
-
                 <div
                 className={`border-2 rounded-xl p-6 cursor-pointer transition-all ${role === 'contractor' ? 'border-amber-500 bg-amber-50' : 'border-gray-200 hover:border-amber-300'}`}
                 onClick={() => handleRoleSelect('contractor')}>
@@ -86,7 +79,7 @@ export function Signup() {
                     <div
                     className={`p-3 rounded-full mb-4 ${role === 'contractor' ? 'bg-amber-100 text-amber-600' : 'bg-gray-100 text-gray-500'}`}>
                     
-                      <EngineeringIcon fontSize="large" />
+                      <Wrench size={32} />
                     </div>
                     <h4 className="text-lg font-bold text-navy-900 mb-2">
                       I'm a Contractor
@@ -114,26 +107,22 @@ export function Signup() {
                   Change role
                 </button>
               </div>
-
               <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
                 <Input label="First name" required placeholder="John" />
                 <Input label="Last name" required placeholder="Doe" />
               </div>
-
               <Input
               label="Email address"
               type="email"
               required
               placeholder="john@example.com" />
             
-
               <Input
               label="Password"
               type="password"
               required
               placeholder="Create a strong password" />
             
-
               <div className="flex items-start">
                 <div className="flex items-center h-5">
                   <input
@@ -164,7 +153,6 @@ export function Signup() {
                   </label>
                 </div>
               </div>
-
               <div>
                 <Button type="submit" fullWidth isLoading={isLoading}>
                   Create Account
