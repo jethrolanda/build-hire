@@ -81,3 +81,66 @@ export interface Project {
   contractor?: ContractorProfile;
   employer?: EmployerProfile;
 }
+
+export interface Milestone {
+  id: string;
+  projectId: string;
+  title: string;
+  description: string;
+  amount: number;
+  status: 'pending' | 'in-progress' | 'completed' | 'approved';
+  dueDate: string;
+  completedDate?: string;
+}
+
+export interface Message {
+  id: string;
+  senderId: string;
+  receiverId: string;
+  content: string;
+  timestamp: string;
+  read: boolean;
+  attachments?: string[];
+}
+
+export interface Conversation {
+  id: string;
+  participants: string[];
+  lastMessage: Message;
+  unreadCount: number;
+  job?: Job;
+}
+
+export interface Review {
+  id: string;
+  projectId: string;
+  reviewerId: string;
+  revieweeId: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+  reviewer?: User;
+  reviewee?: User;
+}
+
+export interface Notification {
+  id: string;
+  userId: string;
+  type: string;
+  title: string;
+  message: string;
+  read: boolean;
+  createdAt: string;
+  link?: string;
+}
+
+export interface Payment {
+  id: string;
+  projectId: string;
+  milestoneId: string;
+  amount: number;
+  status: 'held' | 'released' | 'pending';
+  date: string;
+  project?: Project;
+  milestone?: Milestone;
+}

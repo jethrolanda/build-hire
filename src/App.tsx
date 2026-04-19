@@ -7,21 +7,30 @@ import {
 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { MainLayout, DashboardLayout } from './components/Layouts';
-// Pages
+// Public Pages
 import { Landing } from './pages/Landing';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { JobBoard } from './pages/JobBoard';
 import { JobDetail } from './pages/JobDetail';
+import { ContractorProfile } from './pages/ContractorProfile';
+import { Contractors } from './pages/Contractors';
+import { HowItWorks } from './pages/HowItWorks';
+// Employer Pages
 import { EmployerDashboard } from './pages/employer/Dashboard';
+import { PostJob } from './pages/employer/PostJob';
+import { MyJobs } from './pages/employer/MyJobs';
+import { Proposals } from './pages/employer/Proposals';
+import { Projects as EmployerProjects } from './pages/employer/Projects';
+import { Payments } from './pages/employer/Payments';
+import { EmployerMessages } from './pages/employer/Messages';
+// Contractor Pages
 import { ContractorDashboard } from './pages/contractor/Dashboard';
-// Placeholder for unimplemented pages
-const PlaceholderPage = ({ title }: {title: string;}) =>
-<div className="p-8 text-center">
-    <h1 className="text-2xl font-bold text-navy-900 mb-4">{title}</h1>
-    <p className="text-gray-500">This feature is coming in Phase 2.</p>
-  </div>;
-
+import { ContractorProfileEditor } from './pages/contractor/Profile';
+import { MyProposals } from './pages/contractor/MyProposals';
+import { ContractorProjects } from './pages/contractor/Projects';
+import { Earnings } from './pages/contractor/Earnings';
+import { ContractorMessages } from './pages/contractor/Messages';
 export function App() {
   return (
     <AuthProvider>
@@ -34,14 +43,9 @@ export function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/jobs" element={<JobBoard />} />
             <Route path="/jobs/:id" element={<JobDetail />} />
-            <Route
-              path="/contractors"
-              element={<PlaceholderPage title="Contractor Directory" />} />
-            
-            <Route
-              path="/how-it-works"
-              element={<PlaceholderPage title="How It Works" />} />
-            
+            <Route path="/contractors/:id" element={<ContractorProfile />} />
+            <Route path="/contractors" element={<Contractors />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
           </Route>
 
           {/* Employer Dashboard Routes */}
@@ -54,33 +58,20 @@ export function App() {
               element={<Navigate to="/employer/dashboard" replace />} />
             
             <Route path="dashboard" element={<EmployerDashboard />} />
-            <Route
-              path="post-job"
-              element={<PlaceholderPage title="Post a Job" />} />
-            
-            <Route
-              path="jobs"
-              element={<PlaceholderPage title="My Posted Jobs" />} />
-            
-            <Route
-              path="proposals"
-              element={<PlaceholderPage title="Received Proposals" />} />
-            
-            <Route
-              path="projects"
-              element={<PlaceholderPage title="Active Projects" />} />
-            
-            <Route
-              path="payments"
-              element={<PlaceholderPage title="Payments & Escrow" />} />
-            
-            <Route
-              path="messages"
-              element={<PlaceholderPage title="Messages" />} />
-            
+            <Route path="post-job" element={<PostJob />} />
+            <Route path="jobs" element={<MyJobs />} />
+            <Route path="proposals" element={<Proposals />} />
+            <Route path="projects" element={<EmployerProjects />} />
+            <Route path="payments" element={<Payments />} />
+            <Route path="messages" element={<EmployerMessages />} />
             <Route
               path="settings"
-              element={<PlaceholderPage title="Settings" />} />
+              element={
+              <div className="p-8 text-center">
+                  <h1 className="text-2xl font-bold text-navy-900">Settings</h1>
+                  <p className="text-gray-500">Settings page coming soon.</p>
+                </div>
+              } />
             
           </Route>
 
@@ -94,29 +85,19 @@ export function App() {
               element={<Navigate to="/contractor/dashboard" replace />} />
             
             <Route path="dashboard" element={<ContractorDashboard />} />
-            <Route
-              path="profile"
-              element={<PlaceholderPage title="Edit Profile" />} />
-            
-            <Route
-              path="proposals"
-              element={<PlaceholderPage title="My Proposals" />} />
-            
-            <Route
-              path="projects"
-              element={<PlaceholderPage title="Active Projects" />} />
-            
-            <Route
-              path="earnings"
-              element={<PlaceholderPage title="Earnings & Payments" />} />
-            
-            <Route
-              path="messages"
-              element={<PlaceholderPage title="Messages" />} />
-            
+            <Route path="profile" element={<ContractorProfileEditor />} />
+            <Route path="proposals" element={<MyProposals />} />
+            <Route path="projects" element={<ContractorProjects />} />
+            <Route path="earnings" element={<Earnings />} />
+            <Route path="messages" element={<ContractorMessages />} />
             <Route
               path="settings"
-              element={<PlaceholderPage title="Settings" />} />
+              element={
+              <div className="p-8 text-center">
+                  <h1 className="text-2xl font-bold text-navy-900">Settings</h1>
+                  <p className="text-gray-500">Settings page coming soon.</p>
+                </div>
+              } />
             
           </Route>
 
