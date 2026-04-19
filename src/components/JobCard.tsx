@@ -1,0 +1,116 @@
+import React from 'react';
+import { Job } from '../data/types';
+import { Badge } from './Badge';
+import { motion } from 'framer-motion';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import BuildIcon from '@mui/icons-material/Build';
+interface JobCardProps {
+  job: Job;
+  onClick?: () => void;
+}
+export function JobCard({ job, onClick }: JobCardProps) {
+  const getUrgencyColor = (urgency: string) => {
+    switch (urgency) {
+      case 'emergency':
+        return 'danger';
+      case 'high':
+        return 'warning';
+      case 'medium':
+        return 'info';
+      default:
+        return 'neutral';
+    }
+  };
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'open':
+        return 'success';
+      case 'in-progress':
+        return 'primary';
+      case 'completed':
+        return 'neutral';
+      default:
+        return 'neutral';
+    }
+  };
+  const timeAgo = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInDays = Math.floor(
+      (now.getTime() - date.getTime()) / (1000 * 3600 * 24)
+    );
+    if (diffInDays === 0) return 'Today';
+    if (diffInDays === 1) return 'Yesterday';
+    return `${diffInDays} days ago`;
+  };
+  return (
+    <motion.div
+      whileHover={{
+        y: -4,
+        boxShadow:
+        '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
+      }}
+      className="bg-white rounded-xl border border-gray-200 p-6 cursor-pointer transition-all duration-200 shadow-sm"
+      onClick={onClick}>
+      
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h3 className="text-lg font-semibold text-navy-900 mb-1 line-clamp-1">
+            {job.title}
+          </h3>
+          <div className="flex items-center text-sm text-gray-500 space-x-4">
+            <span className="flex items-center">
+              <LocationOnIcon className="w-4 h-4 mr-1" fontSize="small" />{' '}
+              {job.location}
+            </span>
+            <span className="flex items-center">
+              <AccessTimeIcon className="w-4 h-4 mr-1" fontSize="small" />{' '}
+              {timeAgo(job.postedAt)}
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col items-end space-y-2">
+          <Badge variant={getStatusColor(job.status)}>
+            {job.status.toUpperCase()}
+          </Badge>
+          {job.urgency !== 'low' &&
+          <Badge variant={getUrgencyColor(job.urgency)}>
+              {job.urgency} urgency
+            </Badge>
+          }
+        </div>
+      </div>
+
+      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+        {job.description}
+      </p>
+
+      <div className="flex flex-wrap gap-2 mb-4">
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+          <BuildIcon className="w-3 h-3 mr-1" fontSize="small" /> {job.trade}
+        </span>
+        {job.requiredCertifications.map((cert) =>
+        <span
+          key={cert}
+          className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-50 text-gray-600 border border-gray-200">
+          
+            {cert}
+          </span>
+        )}
+      </div>
+
+      <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+        <div className="flex items-center text-navy-800 font-semibold">
+          <AttachMoneyIcon className="w-5 h-5 text-amber-500" />$
+          {job.budgetMin.toLocaleString()} - ${job.budgetMax.toLocaleString()}
+        </div>
+        <div className="text-sm text-gray-500">
+          <span className="font-medium text-gray-900">{job.bidsCount}</span>{' '}
+          proposals
+        </div>
+      </div>
+    </motion.div>);
+
+}
